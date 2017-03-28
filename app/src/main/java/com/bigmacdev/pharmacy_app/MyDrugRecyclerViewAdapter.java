@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.bigmacdev.pharmacy_app.DrugFragment.OnListFragmentInteractionListener;
-import com.bigmacdev.pharmacy_app.dummy.DummyContent.DummyItem;
+import com.bigmacdev.pharmacy_app.dummy.DummyContent2.DummyItem;
 
 import java.util.List;
 
@@ -36,8 +36,9 @@ public class MyDrugRecyclerViewAdapter extends RecyclerView.Adapter<MyDrugRecycl
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
+        holder.mNameView.setText(mValues.get(position).id);
+        holder.mQuantityView.setText(mValues.get(position).content);
+        holder.mPriceView.setText(mValues.get(position).details);
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,20 +59,22 @@ public class MyDrugRecyclerViewAdapter extends RecyclerView.Adapter<MyDrugRecycl
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
-        public final TextView mIdView;
-        public final TextView mContentView;
+        public final TextView mNameView;
+        public final TextView mQuantityView;
+        public final TextView mPriceView;
         public DummyItem mItem;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            mIdView = (TextView) view.findViewById(R.id.id);
-            mContentView = (TextView) view.findViewById(R.id.content);
+            mNameView = (TextView) view.findViewById(R.id.id);
+            mQuantityView = (TextView) view.findViewById(R.id.content);
+            mPriceView = (TextView)view.findViewById(R.id.price);
         }
 
         @Override
         public String toString() {
-            return super.toString() + " '" + mContentView.getText() + "'";
+            return super.toString() + " '" + mNameView.getText() + "'";
         }
     }
 }

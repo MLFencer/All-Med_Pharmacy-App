@@ -21,7 +21,8 @@
         <activity
             android:name=".Menu"
             android:screenOrientation="landscape"/>
-        <activity android:name=".Stock"></activity>
+        <activity android:name=".Stock"
+            android:screenOrientation="landscape"></activity>
     </application>
 
 </manifest>

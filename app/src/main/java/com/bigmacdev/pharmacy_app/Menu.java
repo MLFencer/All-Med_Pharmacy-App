@@ -21,22 +21,11 @@ public class Menu extends AppCompatActivity implements PerscriptionFragment.OnLi
     private Button history, completed, logout;
     private Spinner menu;
     private TextView patientName, perscriberName, drugName, drugQuantity, scriptDate, scriptNumber;
-    private MyPerscriptionRecyclerViewAdapter prva;
-    private DummyContent dummyContent;
-    private Fragment listFragment;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
-
-
-
-        dummyContent=new DummyContent();
-
-        //prva = new MyPerscriptionRecyclerViewAdapter(dummyContent.ITEMS, );
 
         menu = (Spinner)findViewById(R.id.menuMain);
         history=(Button)findViewById(R.id.historyMain);
@@ -82,7 +71,7 @@ public class Menu extends AppCompatActivity implements PerscriptionFragment.OnLi
 
     @Override
     public void onListFragmentInteraction(DummyContent.DummyItem item) {
-        Toast.makeText(this, "Selected this item.", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Selected script: "+item.id, Toast.LENGTH_SHORT).show();
     }
 
     View.OnClickListener completedClick = new View.OnClickListener() {

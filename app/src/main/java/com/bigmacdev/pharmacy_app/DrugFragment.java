@@ -10,8 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.bigmacdev.pharmacy_app.dummy.DummyContent;
-import com.bigmacdev.pharmacy_app.dummy.DummyContent.DummyItem;
+import com.bigmacdev.pharmacy_app.dummy.DummyContent2;
+import com.bigmacdev.pharmacy_app.dummy.DummyContent2.DummyItem;
 
 import java.util.List;
 
@@ -69,7 +69,7 @@ public class DrugFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyDrugRecyclerViewAdapter(DummyContent.ITEMS, mListener));
+            recyclerView.setAdapter(new MyDrugRecyclerViewAdapter(DummyContent2.ITEMS, mListener));
         }
         return view;
     }
