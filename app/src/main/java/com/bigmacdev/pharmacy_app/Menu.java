@@ -3,6 +3,7 @@ package com.bigmacdev.pharmacy_app;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -11,16 +12,25 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class Menu extends AppCompatActivity implements PerscriptionFragment.OnListFragmentInteractionListener{
 
     private Button history, completed, logout;
     private Spinner menu;
     private TextView patientName, perscriberName, drugName, drugQuantity, scriptDate, scriptNumber;
+    private ArrayList<Perscription> perscriptions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+
+        Bundle bundle = this.getIntent().getExtras();
+        perscriptions = (ArrayList<Perscription>)bundle.getSerializable("perscriptions");
+        if (perscriptions.get(0).getPatientLastName().equals("Stark")){
+            Log.d("Menu", "Got Bundle");
+        }
 
         menu = (Spinner)findViewById(R.id.menuMain);
         history=(Button)findViewById(R.id.historyMain);
@@ -66,7 +76,7 @@ public class Menu extends AppCompatActivity implements PerscriptionFragment.OnLi
 
     @Override
     public void onListFragmentInteraction(Perscription item) {
-        Toast.makeText(this, "Selected script: "+item.getPatientLastName(), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Selected script: "+item.getPatientLastName(), Toast.LENGTH_SHORT).show();
         patientName.setText(item.getPatientFirstName()+" "+item.getPatientLastName());
         perscriberName.setText("Dr. "+item.getPerscriberName());
         drugName.setText(item.getDrugId());

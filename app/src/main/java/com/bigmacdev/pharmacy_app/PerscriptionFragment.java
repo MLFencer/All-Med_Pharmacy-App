@@ -29,6 +29,7 @@ public class PerscriptionFragment extends Fragment {
     // TODO: Customize parameters
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
+    private ArrayList<Perscription> ps;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -52,6 +53,8 @@ public class PerscriptionFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
 
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);

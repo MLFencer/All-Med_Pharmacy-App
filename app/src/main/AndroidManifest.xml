@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.bigmacdev.pharmacy_app">
 
-    <supports-screens android:xlargeScreens="true"></supports-screens>
+    <supports-screens android:xlargeScreens="true" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -20,9 +21,11 @@
         </activity>
         <activity
             android:name=".Menu"
-            android:screenOrientation="landscape"/>
-        <activity android:name=".Stock"
-            android:screenOrientation="landscape"></activity>
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Stock"
+            android:screenOrientation="landscape" />
+        <activity android:name=".AddPerscription"></activity>
     </application>
 
 </manifest>
