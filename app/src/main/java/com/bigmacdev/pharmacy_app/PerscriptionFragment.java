@@ -3,6 +3,7 @@ package com.bigmacdev.pharmacy_app;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 import com.bigmacdev.pharmacy_app.dummy.DummyContent;
 import com.bigmacdev.pharmacy_app.dummy.DummyContent.DummyItem;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -47,6 +49,8 @@ public class PerscriptionFragment extends Fragment {
         return fragment;
     }
 
+    private ArrayList<Perscription> perscriptions = new ArrayList<Perscription>();
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +58,28 @@ public class PerscriptionFragment extends Fragment {
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
         }
+
+        perscriptions.add(new Perscription("Doe", "John", "SomeDrug", "Smith", "12-03-2016", "123456", "90", 10));
+        perscriptions.add(new Perscription("Smith", "Will", "SomeOtherDrug", "Man", "04-03-2016", "123456", "30", 20));
+        perscriptions.add(new Perscription("Jordan", "Hal", "GreekNamedDrug", "Boyz", "01-25-2016", "123456", "60", 15));
+        perscriptions.add(new Perscription("Stark", "Tony", "LatinNamedDrug", "Smyth", "03-03-2016", "123456", "30", 5));
+        perscriptions.add(new Perscription("Queen", "Oliver", "Asprin", "Roy", "02-03-2016", "123456", "60", 12));
+        perscriptions.add(new Perscription("Snark", "Leonard", "CoolDrug", "Williamson", "01-03-2016", "123456", "90", 13));
+
+        new Thread(){
+            @Override
+            public void run() {
+                //Todo: get new perscriptions
+                while(perscriptions.size()>0){
+                    for (int i=0; i<perscriptions.size(); i++){
+                        perscriptions.get(i).updateTimeDue();
+                    }
+                    try {
+                        sleep(30000);
+                    }catch(Exception e){}
+                }
+            }
+        }.start();
     }
 
     @Override
@@ -70,7 +96,7 @@ public class PerscriptionFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyPerscriptionRecyclerViewAdapter(DummyContent.ITEMS, mListener));
+            recyclerView.setAdapter(new MyPerscriptionRecyclerViewAdapter(perscriptions, mListener));
         }
         return view;
     }
@@ -105,7 +131,7 @@ public class PerscriptionFragment extends Fragment {
      */
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onListFragmentInteraction(DummyItem item);
+        void onListFragmentInteraction(Perscription item);
 
     }
 }

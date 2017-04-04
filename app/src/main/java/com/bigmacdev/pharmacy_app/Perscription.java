@@ -7,13 +7,14 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Perscription {
-    private String patientName, drugId, perscriberName, scriptWrittenDate, scriptNumber, quantity;
+    private String patientLastName, patientFirstName, drugId, perscriberName, scriptWrittenDate, scriptNumber, quantity;
     private int timeDue;
     private MyTime time;
 
-    Perscription(String patientName,String drugId,String perscriberName,String scriptWrittenDate,String scriptNumber,String quantity, int timeDue){
+    Perscription(String patientLastName, String patientFirstName, String drugId,String perscriberName,String scriptWrittenDate,String scriptNumber,String quantity, int timeDue){
         this.drugId=drugId;
-        this.patientName=patientName;
+        this.patientLastName=patientLastName;
+        this.patientFirstName=patientFirstName;
         this.perscriberName=perscriberName;
         this.quantity=quantity;
         this.scriptWrittenDate=scriptWrittenDate;
@@ -23,14 +24,26 @@ public class Perscription {
         time.addMinutes(timeDue);
     }
 
-
-
-    public String getPatientName() {
-        return patientName;
+    public int updateTimeDue(){
+        MyTime current = new MyTime();
+        return time.getMinutes()- current.getMinutes();
     }
 
-    public void setPatientName(String patientName) {
-        this.patientName = patientName;
+
+    public String getPatientLastName() {
+        return patientLastName;
+    }
+
+    public String getPatientFirstName() {
+        return patientFirstName;
+    }
+
+    public void setPatientFirstName(String patientFirstName) {
+        this.patientFirstName = patientFirstName;
+    }
+
+    public void setPatientLastName(String patientName) {
+        this.patientLastName = patientName;
     }
 
     public String getDrugId() {

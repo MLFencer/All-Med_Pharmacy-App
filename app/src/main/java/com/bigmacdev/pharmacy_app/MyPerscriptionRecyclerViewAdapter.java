@@ -7,21 +7,20 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.bigmacdev.pharmacy_app.PerscriptionFragment.OnListFragmentInteractionListener;
-import com.bigmacdev.pharmacy_app.dummy.DummyContent.DummyItem;
 
 import java.util.List;
 
 /**
- * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
+ * {@link RecyclerView.Adapter} that can display a {@link Perscription} and makes a call to the
  * specified {@link OnListFragmentInteractionListener}.
  * TODO: Replace the implementation with code for your data type.
  */
 public class MyPerscriptionRecyclerViewAdapter extends RecyclerView.Adapter<MyPerscriptionRecyclerViewAdapter.ViewHolder> {
 
-    private final List<DummyItem> mValues;
+    private final List<Perscription> mValues;
     private final OnListFragmentInteractionListener mListener;
 
-    public MyPerscriptionRecyclerViewAdapter(List<DummyItem> items, OnListFragmentInteractionListener listener) {
+    public MyPerscriptionRecyclerViewAdapter(List<Perscription> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -36,8 +35,8 @@ public class MyPerscriptionRecyclerViewAdapter extends RecyclerView.Adapter<MyPe
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
+        holder.mIdView.setText(mValues.get(position).getPatientLastName());
+        holder.mContentView.setText(mValues.get(position).updateTimeDue());
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,7 +59,7 @@ public class MyPerscriptionRecyclerViewAdapter extends RecyclerView.Adapter<MyPe
         public final View mView;
         public final TextView mIdView;
         public final TextView mContentView;
-        public DummyItem mItem;
+        public Perscription mItem;
 
         public ViewHolder(View view) {
             super(view);

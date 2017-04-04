@@ -70,8 +70,15 @@ public class Menu extends AppCompatActivity implements PerscriptionFragment.OnLi
     };
 
     @Override
-    public void onListFragmentInteraction(DummyContent.DummyItem item) {
-        Toast.makeText(this, "Selected script: "+item.id, Toast.LENGTH_SHORT).show();
+    public void onListFragmentInteraction(Perscription item) {
+        Toast.makeText(this, "Selected script: "+item.getPatientLastName(), Toast.LENGTH_SHORT).show();
+        patientName.setText(item.getPatientFirstName()+" "+item.getPatientLastName());
+        perscriberName.setText("Dr. "+item.getPerscriberName());
+        drugName.setText(item.getDrugId());
+        scriptDate.setText(item.getScriptWrittenDate());
+        drugQuantity.setText(item.getQuantity());
+        scriptNumber.setText(item.getScriptNumber());
+
     }
 
     View.OnClickListener completedClick = new View.OnClickListener() {
