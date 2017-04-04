@@ -36,7 +36,7 @@ public class MyPerscriptionRecyclerViewAdapter extends RecyclerView.Adapter<MyPe
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
         holder.mIdView.setText(mValues.get(position).getPatientLastName());
-        holder.mContentView.setText(mValues.get(position).updateTimeDue());
+        holder.mContentView.setText(String.valueOf(mValues.get(position).getTimeLeft()));
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override

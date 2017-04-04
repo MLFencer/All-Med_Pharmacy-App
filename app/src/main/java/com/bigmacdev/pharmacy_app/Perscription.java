@@ -8,7 +8,7 @@ import java.util.Date;
 
 public class Perscription {
     private String patientLastName, patientFirstName, drugId, perscriberName, scriptWrittenDate, scriptNumber, quantity;
-    private int timeDue;
+    private int timeDue, timeLeft;
     private MyTime time;
 
     Perscription(String patientLastName, String patientFirstName, String drugId,String perscriberName,String scriptWrittenDate,String scriptNumber,String quantity, int timeDue){
@@ -22,11 +22,16 @@ public class Perscription {
         this.timeDue=timeDue;
         time = new MyTime();
         time.addMinutes(timeDue);
+        updateTimeDue();
     }
 
-    public int updateTimeDue(){
+    public void updateTimeDue(){
         MyTime current = new MyTime();
-        return time.getMinutes()- current.getMinutes();
+        timeLeft = time.getMinutes()-current.getMinutes();
+    }
+
+    public int getTimeLeft(){
+        return timeLeft;
     }
 
 

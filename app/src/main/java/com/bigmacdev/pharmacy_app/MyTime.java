@@ -48,7 +48,8 @@ public class MyTime {
     }
 
     public int getMinutes() {
-        return this.minutes;
+
+        return this.minutes+hours*60;
     }
 
     public boolean isEqual(MyTime other){
