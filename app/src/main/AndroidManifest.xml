@@ -25,7 +25,9 @@
         <activity
             android:name=".Stock"
             android:screenOrientation="landscape" />
-        <activity android:name=".AddPerscription"></activity>
+        <activity android:name=".AddPerscription" />
+        <activity android:name=".AddUser1" />
+        <activity android:name=".AddUser2"></activity>
     </application>
 
 </manifest>

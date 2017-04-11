@@ -2,10 +2,6 @@ package com.bigmacdev.pharmacy_app;
 
 
 import java.io.Serializable;
-import java.text.DateFormat;
-import java.text.DateFormatSymbols;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class Perscription implements Serializable{
     private static final long serialVersionUID = 454690L;
