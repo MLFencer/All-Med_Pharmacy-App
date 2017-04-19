@@ -27,8 +27,8 @@ public class AddPerscription extends AppCompatActivity {
 
         //Todo: make it so that the pharmasist can choose when a walk-in is due.
 
-        Bundle bundle = this.getIntent().getExtras();
-        perscriptions = (ArrayList<Perscription>) bundle.getSerializable("perscriptions");
+      //  Bundle bundle = this.getIntent().getExtras();
+       // perscriptions = (ArrayList<Perscription>) bundle.getSerializable("perscriptions");
 
         submit = (Button)findViewById(R.id.submitAdd);
         menu = (Spinner)findViewById(R.id.menuAdd);

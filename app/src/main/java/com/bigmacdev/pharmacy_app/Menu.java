@@ -28,9 +28,9 @@ public class Menu extends AppCompatActivity implements PerscriptionFragment.OnLi
 
         Bundle bundle = this.getIntent().getExtras();
         perscriptions = (ArrayList<Perscription>)bundle.getSerializable("perscriptions");
-        if (perscriptions.get(0).getPatientLastName().equals("Stark")){
-            Log.d("Menu", "Got Bundle");
-        }
+//        if (perscriptions.get(0).getPatientLastName().equals("Stark")){
+     //       Log.d("Menu", "Got Bundle");
+     //   }
 
         menu = (Spinner)findViewById(R.id.menuMain);
         history=(Button)findViewById(R.id.historyMain);
@@ -58,14 +58,22 @@ public class Menu extends AppCompatActivity implements PerscriptionFragment.OnLi
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
             if (position!=0){
+                Intent intent = new Intent();
+                Bundle bundle = new Bundle();
                 switch (position){
                     case 1:
                         Toast.makeText(Menu.this, "Already on the Menu", Toast.LENGTH_SHORT).show();
                         break;
                     case 2:
-                        Intent intent = new Intent();
                         intent.setClass(Menu.this, Stock.class);
+                        intent.putExtras(bundle);
                         startActivity(intent);
+                        break;
+                    case 3:
+                        intent.setClass(Menu.this, AddPerscription.class);
+                        startActivity(intent);
+                        intent.putExtras(bundle);
+                        break;
                 }
             }
         }

@@ -36,7 +36,10 @@ public class MainActivity extends AppCompatActivity {
                 } else{
                     if (login(username.getText().toString(), password.getText().toString())){
                         Bundle bundle = new Bundle();
-                        //bundle.putSerializable();
+                        Intent intent = new Intent();
+                        intent.putExtras(bundle);
+                        intent.setClass(MainActivity.this, Menu.class);
+                        startActivity(intent);
                     } else {
                         Toast.makeText(MainActivity.this, "Username or Password is Incorrect!", Toast.LENGTH_SHORT).show();
                         username.setText("");
